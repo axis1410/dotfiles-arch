@@ -6,30 +6,11 @@ return {
 	{ "sainnhe/edge", lazy = false },
 	{ "sainnhe/sonokai", lazy = false },
 	{ "rose-pine/neovim", lazy = false, name = "rose-pine" },
-	
-	
-	
-
-	
-	
 	{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 	{
 		"navarasu/onedark.nvim",
 		lazy = false,
 		priority = 1000,
-		
-		
-		--
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	},
 	{
 		"vague2k/vague.nvim",
@@ -42,35 +23,4 @@ return {
 			require("poimandres").setup({})
 		end,
 	},
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
