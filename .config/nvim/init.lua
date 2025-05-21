@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.opt.termguicolors = true
 
--- Optimize Neovim startup
 vim.loader.enable()
 
 require("lazy").setup({
@@ -38,6 +37,8 @@ require("lazy").setup({
 	require("plugins.lazygit"),
 	require("plugins.web-dev"),
 	require("plugins.tw"),
+	require("plugins.mini"),
+	require("plugins.noice"),
 })
 
 local success, theme = pcall(require, "core.theme")
