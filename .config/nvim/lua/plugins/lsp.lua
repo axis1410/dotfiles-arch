@@ -149,7 +149,7 @@ return {
 			"stylua",
 			"ruff",
 			"prettier",
-			"shfmt",
+			-- "shfmt",
 			"mypy",
 			-- "gopls",
 			-- "gofumpt",
