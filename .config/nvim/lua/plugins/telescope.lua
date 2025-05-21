@@ -20,9 +20,9 @@ return {
 			defaults = {
 				mappings = {
 					i = {
-						["<C-k>"] = require("telescope.actions").move_selection_previous, -- move to prev result
-						["<C-j>"] = require("telescope.actions").move_selection_next, -- move to next result
-						["<C-l>"] = require("telescope.actions").select_default, -- open file
+						["<C-k>"] = require("telescope.actions").move_selection_previous,
+						["<C-j>"] = require("telescope.actions").move_selection_next,
+						["<C-l>"] = require("telescope.actions").select_default,
 					},
 				},
 				layout_config = {
@@ -58,11 +58,9 @@ return {
 			},
 		})
 
-		-- Enable Telescope extensions if they are installed
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
 
-		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
 
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[S]earch [H]elp" })
@@ -80,13 +78,12 @@ return {
 			builtin.colorscheme({
 				enable_preview = true,
 				attach_mappings = function(prompt_bufnr, map)
-					-- Add persistence when selecting a theme
 					local actions = require("telescope.actions")
 					actions.select_default:replace(function()
 						local selection = require("telescope.actions.state").get_selected_entry()
 						actions.close(prompt_bufnr)
 						vim.cmd.colorscheme(selection.value)
-						-- Save the selected colorscheme to a file
+
 						local theme_file = vim.fn.stdpath("config") .. "/lua/core/theme.lua"
 						local file = io.open(theme_file, "w")
 						if file then
@@ -103,17 +100,13 @@ return {
 			})
 		end, { desc = "Select [Th]eme" })
 
-		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()
-			-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
 				previewer = false,
 			}))
 		end, { desc = "[/] Fuzzily search in current buffer" })
 
-		-- It's also possible to pass additional configuration options.
-		--  See `:help telescope.builtin.live_grep()` for information about particular keys
 		vim.keymap.set("n", "<leader>fg/", function()
 			builtin.live_grep({
 				grep_open_files = true,

@@ -5,7 +5,9 @@ return {
 		lazy = false,
 
 		opts = {
-			indent = {},
+			indent = {
+				enabled = true,
+			},
 
 			input = {
 				enabled = true,
