@@ -7,26 +7,14 @@ ZSH_THEME="agnosterzak"
 
 plugins=(
     git
-    archlinux
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# Check archlinux plugin commands here
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/archlinux
+fastfetch --logo arch2
 
-# Display Pokemon-colorscripts
-# Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
-#pokemon-colorscripts --no-title -s -r #without fastfetch
-#pokemon-colorscripts --no-title -s -r | fastfetch -c $HOME/.config/fastfetch/config-pokemon.jsonc --logo-type file-raw --logo-height 10 --logo-width 5 --logo -
-
-# fastfetch. Will be disabled if above colorscript was chosen to install
-# fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
-fastfetch
-
-# Set-up icons for files/directories in terminal using lsd
 alias ls="eza --icons"
 alias ll="eza --icons --long --header --git"
 alias la="eza --icons --long --header --git --all"
@@ -37,9 +25,6 @@ alias llm="eza --icons --long --header --git --sort=modified"
 alias llg="eza --icons --long --header --git --grid"
 alias llx="eza --icons --long --header --git --extended"
 
-
-
-# Set-up FZF key bindings (CTRL R for fuzzy history finder)
 source <(fzf --zsh)
 
 HISTFILE=~/.zsh_history
