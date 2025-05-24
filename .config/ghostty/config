@@ -13,3 +13,6 @@ cursor-style-blink = true
 clipboard-trim-trailing-spaces = true
 
 mouse-hide-while-typing = true
+
+background-opacity = 0.8
+background-blur = true
