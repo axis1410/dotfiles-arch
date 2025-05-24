@@ -3,30 +3,6 @@ return {
 	event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		
-		
-		
-		
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		local function cwd()
-			return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-		end
-
 		local hide_in_width = function()
 			return vim.fn.winwidth(0) > 80
 		end
@@ -34,7 +10,7 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				
+
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = { "alpha", "neo-tree", "NvimTree" },
@@ -49,7 +25,6 @@ return {
 						separator = { left = "", right = "" },
 						color = {
 							fg = "#1a1b26",
-							
 							gui = "bold",
 						},
 					},
@@ -72,8 +47,6 @@ return {
 						symbols = { modified = " ●", readonly = " ", unnamed = " [No Name]", newfile = " [New]" },
 						shorting_target = 40,
 					},
-					
-					
 				},
 				lualine_x = {
 					{
@@ -85,15 +58,6 @@ return {
 						update_in_insert = false,
 						always_visible = false,
 					},
-
-					
-
-					
-					
-					
-					
-					
-					
 
 					{ "encoding", fmt = string.upper, color = { fg = "#e0af68" } },
 					{ "filetype", icon_only = true },
