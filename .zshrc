@@ -179,3 +179,5 @@ export NVM_DIR="$HOME/.nvm"
 alias tmns="tmux new -S"
 alias tmas="tmux attach -t"
 alias tmks="tmux kill-sesion -t"
+
+alias mkdir="mkdir -p"
