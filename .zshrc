@@ -701,8 +701,8 @@ fi
 ### end: completion.zsh ###
 
 # TMUX aliases
-alias tmns="tmux new -S"
+alias tmns="tmux new -s"
 alias tmas="tmux attach -t"
-alias tmks="tmux kill-sesion -t"
+alias tmks="tmux kill-session -t"
 
 alias mkdir="mkdir -p"
