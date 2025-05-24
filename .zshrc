@@ -27,11 +27,17 @@ source $ZSH/oh-my-zsh.sh
 fastfetch
 
 # Set-up icons for files/directories in terminal using lsd
-alias ls='lsd'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
+alias ls="eza --icons"
+alias ll="eza --icons --long --header --git"
+alias la="eza --icons --long --header --git --all"
+alias lt="eza --icons --tree --level=2"
+alias lta="eza --icons --tree --level=2 --all"
+alias lls="eza --icons --long --header --git --sort=size"
+alias llm="eza --icons --long --header --git --sort=modified"
+alias llg="eza --icons --long --header --git --grid"
+alias llx="eza --icons --long --header --git --extended"
+
+
 
 # Set-up FZF key bindings (CTRL R for fuzzy history finder)
 source <(fzf --zsh)
@@ -167,3 +173,9 @@ alias vim="nvim"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# TMUX aliases
+alias tmns="tmux new -S"
+alias tmas="tmux attach -t"
+alias tmks="tmux kill-sesion -t"
