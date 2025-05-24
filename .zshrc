@@ -706,3 +706,6 @@ alias tmas="tmux attach -t"
 alias tmks="tmux kill-session -t"
 
 alias mkdir="mkdir -p"
+
+alias cls="clear"
+alias c="clear"
