@@ -40,6 +40,7 @@ require("lazy").setup({
 	require("plugins.tw"),
 	require("plugins.mini"),
 	require("plugins.noice"),
+	require("plugins.tabout"),
 })
 
 local success, theme = pcall(require, "core.theme")
