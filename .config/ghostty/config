@@ -6,3 +6,10 @@ font-size = 17
 font-synthetic-style = true
 
 theme = "tokyonight"
+
+cursor-style = "block"
+cursor-style-blink = true
+
+clipboard-trim-trailing-spaces = true
+
+mouse-hide-while-typing = true
