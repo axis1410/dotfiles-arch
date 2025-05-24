@@ -27,12 +27,13 @@ GDK_BACKEND=$BACKEND yad \
 " SHIFT K" "Searchable Keybinds" "(Search all Keybinds via rofi)" \
 " SHIFT E" "KooL Hyprland Settings Menu" "" \
 "" "" "" \
-" enter" "Terminal" "(kitty)" \
+" enter" "Terminal" "(ghostty)" \
 " SHIFT enter" "DropDown Terminal" " Q to close" \
 " B" "Launch Browser" "(Default browser)" \
 " A" "Desktop Overview" "(AGS - if opted to install)" \
 " D" "Application Launcher" "(rofi-wayland)" \
-" E" "Open File Manager" "(Thunar)" \
+" E" "Open File Manager" "(Nautilus)" \
+" R" "Open Apps" "(Wofi)" \
 " S" "Google Search using rofi" "(rofi)" \
 " Q" "close active window" "(not kill)" \
 " Shift Q " "kills an active window" "(kill)" \
