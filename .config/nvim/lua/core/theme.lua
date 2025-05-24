@@ -1,7 +1,7 @@
 local M = {}
 
 M.set_theme = function()
-    vim.cmd.colorscheme("rose-pine")
+    vim.cmd.colorscheme("carbonfox")
 end
 
 return M
