@@ -39,18 +39,18 @@ notify_view() {
             "${sDIR}/Sounds.sh" --error
         fi
 
-    elif [[ "$1" == "swappy" ]]; then
+	elif [[ "$1" == "swappy" ]]; then
 		"${sDIR}/Sounds.sh" --screenshot
-		resp=$(${notify_cmd_shot} " Screenshot:" " Captured by Swappy")
+		resp=$(${notify_cmd_shot} " Screenshot:" " Captured by Swappy and Saved")
 		case "$resp" in
 			action1)
 				swappy -f - <"$tmpfile"
 				;;
 			action2)
 				rm "$tmpfile"
+				rm "$dir/$file"
 				;;
 		esac
-
     else
         local check_file="${dir}/${file}"
         if [[ -e "$check_file" ]]; then
@@ -132,9 +132,10 @@ shotswappy() {
 	tmpfile=$(mktemp)
 	grim -g "$(slurp)" - >"$tmpfile" 
 
-  # Copy without saving
+  # Copy and save
   if [[ -s "$tmpfile" ]]; then
 		wl-copy <"$tmpfile"
+		cp "$tmpfile" "$dir/$file"
     notify_view "swappy"
   fi
 }
