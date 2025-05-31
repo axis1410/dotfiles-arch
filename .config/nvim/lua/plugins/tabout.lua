@@ -33,10 +33,4 @@ return {
 		event = "InsertCharPre",
 		priority = 1000,
 	},
-	{
-		"L3MON4D3/LuaSnip",
-		keys = function()
-			return {}
-		end,
-	},
 }
