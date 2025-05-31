@@ -34,6 +34,7 @@ return {
 					file_ignore_patterns = { "node_modules", "venv" },
 					hidden = true,
 					previewer = false,
+					theme = "dropdown",
 				},
 			},
 			live_grep = {

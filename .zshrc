@@ -72,12 +72,6 @@ function __zoxide_doctor() {
         '' >&2
 }
 
-# =============================================================================
-#
-# When using zoxide with --no-cmd, alias these internal functions as desired.
-#
-
-# Jump to a directory using only keywords.
 function __zoxide_z() {
     __zoxide_doctor
     if [[ "$#" -eq 0 ]]; then
@@ -88,22 +82,16 @@ function __zoxide_z() {
         __zoxide_cd "$2"
     else
         \builtin local result
-        # shellcheck disable=SC2312
         result="$(\command zoxide query --exclude "$(__zoxide_pwd)" -- "$@")" && __zoxide_cd "${result}"
     fi
 }
 
-# Jump to a directory using interactive search.
 function __zoxide_zi() {
     __zoxide_doctor
     \builtin local result
     result="$(\command zoxide query --interactive -- "$@")" && __zoxide_cd "${result}"
 }
 
-# =============================================================================
-#
-# Commands for zoxide. Disable these using --no-cmd.
-#
 
 function z() {
     __zoxide_z "$@"
@@ -281,47 +269,12 @@ fi
   eval $__fzf_key_bindings_options
   'unset' '__fzf_key_bindings_options'
 }
-### end: key-bindings.zsh ###
-### completion.zsh ###
-#     ____      ____
-#    / __/___  / __/
-#   / /_/_  / / /_
-#  / __/ / /_/ __/
-# /_/   /___/_/ completion.zsh
-#
-# - $FZF_TMUX                 (default: 0)
-# - $FZF_TMUX_OPTS            (default: empty)
-# - $FZF_COMPLETION_TRIGGER   (default: '**')
-# - $FZF_COMPLETION_OPTS      (default: empty)
-# - $FZF_COMPLETION_PATH_OPTS (default: empty)
-# - $FZF_COMPLETION_DIR_OPTS  (default: empty)
 
 
-# Both branches of the following `if` do the same thing -- define
-# __fzf_completion_options such that `eval $__fzf_completion_options` sets
-# all options to the same values they currently have. We'll do just that at
-# the bottom of the file after changing options to what we prefer.
-#
-# IMPORTANT: Until we get to the `emulate` line, all words that *can* be quoted
-# *must* be quoted in order to prevent alias expansion. In addition, code must
-# be written in a way works with any set of zsh options. This is very tricky, so
-# careful when you change it.
-#
-# Start by loading the builtin zsh/parameter module. It provides `options`
-# associative array that stores current shell options.
+
 if 'zmodload' 'zsh/parameter' 2>'/dev/null' && (( ${+options} )); then
-  # This is the fast branch and it gets taken on virtually all Zsh installations.
-  #
-  # ${(kv)options[@]} expands to array of keys (option names) and values ("on"
-  # or "off"). The subsequent expansion# with (j: :) flag joins all elements
-  # together separated by spaces. __fzf_completion_options ends up with a value
-  # like this: "options=(shwordsplit off aliases on ...)".
   __fzf_completion_options="options=(${(j: :)${(kv)options[@]}})"
 else
-  # This branch is much slower because it forks to get the names of all
-  # zsh options. It's possible to eliminate this fork but it's not worth the
-  # trouble because this branch gets taken only on very ancient or broken
-  # zsh installations.
   () {
     # That `()` above defines an anonymous function. This is essentially a scope
     # for local parameters. We use it to avoid polluting global scope.
