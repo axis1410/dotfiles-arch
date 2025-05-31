@@ -17,7 +17,7 @@ vim.opt.termguicolors = true
 vim.loader.enable()
 
 require("lazy").setup({
-	require("plugins.lualine"),
+	require("plugins.statusline"),
 	-- require("plugins.staline"),
 	require("plugins.colorscheme"),
 	require("plugins.bufferline"),

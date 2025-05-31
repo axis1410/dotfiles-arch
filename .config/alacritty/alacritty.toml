@@ -1,0 +1,9 @@
+[font]
+normal.family = "MonaspiceNe Nerd Font Mono"
+bold.family = "MonaspiceNe Nerd Font Mono Bold"
+italic.family = "MonaspiceNe Nerd Font Mono Italic"
+bold_italic.family = "MonaspiceNe Nerd Font Mono Bold Italic"
+size = 18
+
+[mouse]
+hide_when_typing = false

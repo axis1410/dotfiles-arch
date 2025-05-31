@@ -1,26 +1,40 @@
 return {
 	{ "folke/tokyonight.nvim", lazy = false },
-	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
-	{ "rebelot/kanagawa.nvim", lazy = false },
-	{ "sainnhe/gruvbox-material", lazy = false },
-	{ "sainnhe/edge", lazy = false },
-	{ "sainnhe/sonokai", lazy = false },
+	{ "neanias/everforest-nvim" },
 	{ "rose-pine/neovim", lazy = false, name = "rose-pine" },
-	{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
+	{ "vague2k/vague.nvim" },
+	{ "nickkadutskyi/jb.nvim", lazy = false, priority = 1000 },
+	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
+	{ "Mofiqul/vscode.nvim", lazy = false, priority = 1000 },
+	{ "realbucksavage/riderdark.vim", lazy = false, priority = 1000 },
+
 	{
+
 		"navarasu/onedark.nvim",
 		lazy = false,
 		priority = 1000,
+		config = function()
+			require("onedark").setup({
+
+				style = "warmer",
+				code_style = {
+					comments = "italic",
+					keywords = "none",
+					functions = "none",
+					strings = "none",
+					variables = "none",
+				},
+			})
+		end,
 	},
+
 	{
-		"vague2k/vague.nvim",
-	},
-	{
-		"olivercederborg/poimandres.nvim",
+		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("poimandres").setup({})
+			vim.g.gruvbox_material_enable_italic = true
+			vim.g.gruvbox_material_background = "medium"
 		end,
 	},
 }

@@ -19,9 +19,9 @@ return {
 					style = "icon",
 					icon = "▎",
 				},
-				buffer_close_icon = "",
+				buffer_close_icon = "x",
 				modified_icon = "●",
-				close_icon = "x",
+				close_icon = "",
 				left_trunc_marker = "",
 				right_trunc_marker = "",
 				diagnostics_update_in_insert = false,
@@ -66,8 +66,12 @@ return {
 			},
 		})
 
+		local opts = { noremap = true, silent = true }
+
 		vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
 		vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
-		vim.keymap.set("n", "bd", ":bdelete!<CR>", opts)
+		vim.keymap.set("n", "<leader>bd", ":bdelete!<CR>", opts)
+		vim.keymap.set("n", "<leader>x", ":bdelete!<CR>", opts)
+		-- vim.keymap.set("n", "<leader>b", "<cmd> enew <CR>", opts)
 	end,
 }

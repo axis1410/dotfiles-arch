@@ -1,12 +1,11 @@
 return {
-	-- {
-	-- 	"echasnovski/mini.bracketed",
-	-- 	version = false,
-	-- 	config = function()
-	-- 		require("mini.bracketed").setup()
-	-- 	end,
-	-- },
-
+	{
+		"echasnovski/mini.bracketed",
+		version = false,
+		config = function()
+			require("mini.bracketed").setup()
+		end,
+	},
 	{
 		"echasnovski/mini.move",
 		version = false,
@@ -71,25 +70,25 @@ return {
 		config = function()
 			require("mini.surround").setup({
 				mappings = {
-					add = "sa",
-					delete = "sd",
-					find = "sf",
-					find_left = "sF",
-					highlight = "sh",
-					replace = "sr",
-					update_n_lines = "sn",
+					add = "<leader>sa",
+					delete = "<leader>sd",
+					find = "<leader>sf",
+					find_left = "<leader>sF",
+					highlight = "<leader>sh",
+					replace = "<leader>sr",
+					update_n_lines = "<leader>sn",
 				},
 			})
 		end,
 		opts = {
 			mappings = {
-				add = "sa",
-				delete = "sd",
-				find = "sf",
-				find_left = "sF",
-				highlight = "sh",
-				replace = "sr",
-				update_n_lines = "sn",
+				add = "<leader>sa",
+				delete = "<leader>sd",
+				find = "<leader>sf",
+				find_left = "<leader>sF",
+				highlight = "<leader>sh",
+				replace = "<leader>sr",
+				update_n_lines = "<leader>sn",
 			},
 		},
 	},
