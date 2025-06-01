@@ -6,8 +6,6 @@ return {
 	{ "nickkadutskyi/jb.nvim", lazy = false, priority = 1000 },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
 	{ "Mofiqul/vscode.nvim", lazy = false, priority = 1000 },
-	{ "realbucksavage/riderdark.vim", lazy = false, priority = 1000 },
-
 	{
 
 		"navarasu/onedark.nvim",
@@ -15,8 +13,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("onedark").setup({
-
-				style = "warmer",
+				style = "warm",
 				code_style = {
 					comments = "italic",
 					keywords = "none",

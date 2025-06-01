@@ -1,0 +1,42 @@
+# Base colors
+background = #0D1116
+foreground = #E6E6E6  # Slightly softened from pure white for eye comfort
+
+# Cursor
+cursor-color = #F570FF  # More vibrant but slightly toned down
+
+# Selection
+selection-background = #263342
+selection-foreground = #FFFFFF
+
+# Black
+palette = 0=#131820  # Darker black for better contrast
+palette = 8=#505A6A  # More muted bright black that works as a gray
+
+# Red
+palette = 1=#F16C75  # Keep your original red
+palette = 9=#FF8087  # Lighter version for bright red
+
+# Green
+palette = 2=#37F499  # Your original green
+palette = 10=#70FBB9  # Lighter bright green
+
+# Yellow
+palette = 3=#E6B455  # Warmer, more natural yellow
+palette = 11=#FFD687  # Soft bright yellow
+
+# Blue
+palette = 4=#7A90FF  # More vibrant blue
+palette = 12=#A5B3FF  # Lighter bright blue
+
+# Purple/Magenta
+palette = 5=#D68AFF  # More saturated purple
+palette = 13=#F1B6FF  # Lighter bright purple
+
+# Cyan
+palette = 6=#56DBFF  # Slightly more saturated cyan
+palette = 14=#9CEEFF  # Lighter bright cyan
+
+# White
+palette = 7=#B0B9C5  # Off-white for regular text
+palette = 15=#FFFFFF  # Pure white for bright white

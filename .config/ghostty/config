@@ -2,10 +2,12 @@ font-family = MonaspiceNe Nerd Font Mono
 font-style-bold = MonaspiceNe Nerd Font Mono Bold
 font-style-italic = MonaspiceNe Nerd Font Mono Italic
 font-style-bold-italic = MonaspiceNe Nerd Font Mono Bold Italic
-font-size = 17
+font-size = 15
 font-synthetic-style = true
 
-theme = "tokyonight"
+theme = "Tomorrow Night Eighties"
+
+# config-file = ghostty-theme
 
 cursor-style = "block"
 cursor-style-blink = true
@@ -14,7 +16,5 @@ clipboard-trim-trailing-spaces = true
 
 mouse-hide-while-typing = true
 
-background-opacity = 0.8
-background-blur = true
-
 window-colorspace = display-p3
+
