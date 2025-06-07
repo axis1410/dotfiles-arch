@@ -114,30 +114,11 @@ return {
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		local servers = {
-			ts_ls = {},
-			-- pyright = {},
-			isort = {},
-			ruff = {},
-			html = { filetypes = { "html", "twig", "hbs" } },
-			cssls = {},
 			dockerls = {},
-			sqlls = {},
 			terraformls = {},
-			-- jsonls = {},
 			yamlls = {},
-			tailwindcss = {
-				filetypes = {
-					"html",
-					"javascript",
-					"typescript",
-					"javascriptreact",
-					"typescriptreact",
-					"vue",
-				},
-			},
 			rust_analyzer = {},
 			rustfmt = {},
-
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -191,7 +172,6 @@ return {
 			"stylua",
 			"ruff",
 			"prettier",
-			"mypy",
 			"pyproject-fmt",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
