@@ -19,11 +19,10 @@ require("lazy").setup({
 	require("plugins.colorscheme"),
 	require("plugins.bufferline"),
 	require("plugins.treesitter"),
-	require("plugins.telescope"),
 	require("plugins.lsp"),
 	require("plugins.formatting"),
-	require("plugins.nvim-cmp"),
-	-- require("plugins.blinkcmp"),
+	-- require("plugins.nvim-cmp"),
+	require("plugins.blinkcmp"),
 	require("plugins.gitsigns"),
 	require("plugins.plenary"),
 	require("plugins.harpoon"),
@@ -39,6 +38,7 @@ require("lazy").setup({
 	require("plugins.mini"),
 	require("plugins.noice"),
 	require("plugins.tabout"),
+	require("plugins.fzf"),
 })
 
 local success, theme = pcall(require, "core.theme")

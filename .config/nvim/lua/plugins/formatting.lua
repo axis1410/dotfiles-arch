@@ -32,6 +32,8 @@ return {
 			python = { "ruff", "ruff_organize_imports", "ruff_format" },
 			lua = { "stylua" },
 			toml = { "pyproject-fmt" },
+			c = { "clang-format" },
+			cpp = { "clang-format" },
 		},
 		format_on_save = {
 			lsp_format = true,

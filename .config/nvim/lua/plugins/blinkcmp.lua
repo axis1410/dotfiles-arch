@@ -5,7 +5,7 @@ return {
 			"rafamadriz/friendly-snippets",
 		},
 		version = "1.*",
-		build = "cargo build --release",
+		build = "cargo +nightly build --release",
 		opts = {
 			snippets = {
 				expand = function(snippet)
@@ -16,6 +16,9 @@ return {
 				documentation = {
 					auto_show = true,
 				},
+			},
+			fuzzy = {
+				implementation = "prefer_rust",
 			},
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
@@ -34,10 +37,6 @@ return {
 				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
 				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 			},
-			fuzzy = { implementation = "rust", prebuilt_binaries = {
-				ignore_version_mismatch = true,
-			} },
 		},
-		opts_extend = { "sources.default" },
 	},
 }
