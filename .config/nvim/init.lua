@@ -15,13 +15,11 @@ vim.loader.enable()
 
 require("lazy").setup({
 	require("plugins.statusline"),
-	-- require("plugins.staline"),
 	require("plugins.colorscheme"),
 	require("plugins.bufferline"),
 	require("plugins.treesitter"),
 	require("plugins.lsp"),
 	require("plugins.formatting"),
-	-- require("plugins.nvim-cmp"),
 	require("plugins.blinkcmp"),
 	require("plugins.gitsigns"),
 	require("plugins.plenary"),
@@ -39,6 +37,7 @@ require("lazy").setup({
 	require("plugins.noice"),
 	require("plugins.tabout"),
 	require("plugins.fzf"),
+	require("plugins.snippets"),
 })
 
 local success, theme = pcall(require, "core.theme")

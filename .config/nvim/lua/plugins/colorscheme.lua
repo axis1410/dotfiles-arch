@@ -7,6 +7,18 @@ return {
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
 	{ "Mofiqul/vscode.nvim", lazy = false, priority = 1000 },
 	{
+		"rafamadriz/neon",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.g.neon_style = "doom"
+			vim.g.neon_italic_keyword = true
+			vim.g.neon_italic_function = true
+			vim.g.neon_transparent = false
+		end,
+	},
+
+	{
 
 		"navarasu/onedark.nvim",
 		lazy = false,

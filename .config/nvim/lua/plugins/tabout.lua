@@ -26,8 +26,9 @@ return {
 		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
-			"L3MON4D3/LuaSnip",
-			"hrsh7th/nvim-cmp",
+			-- Remove LuaSnip and nvim-cmp dependencies since we're using blink.cmp
+			-- "L3MON4D3/LuaSnip",
+			-- "hrsh7th/nvim-cmp",
 		},
 		opt = true,
 		event = "InsertCharPre",
