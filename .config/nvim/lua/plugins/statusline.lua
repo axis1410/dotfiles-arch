@@ -95,6 +95,8 @@
 return {
 	{
 		"echasnovski/mini.statusline",
+		lazy = false,
+		priority = 1000,
 		config = function()
 			require("mini.statusline").setup({
 				use_icons = vim.g.have_nerd_font,

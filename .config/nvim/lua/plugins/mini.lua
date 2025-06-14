@@ -2,6 +2,7 @@ return {
 	{
 		"echasnovski/mini.bracketed",
 		version = false,
+		event = "VeryLazy",
 		config = function()
 			require("mini.bracketed").setup()
 		end,
@@ -9,6 +10,7 @@ return {
 	{
 		"echasnovski/mini.move",
 		version = false,
+		event = "VeryLazy",
 		config = function()
 			require("mini.move").setup({
 				mappings = {
@@ -27,6 +29,7 @@ return {
 	{
 		"echasnovski/mini.pairs",
 		version = false,
+		event = "InsertEnter",
 		config = function()
 			require("mini.pairs").setup()
 		end,
@@ -34,6 +37,7 @@ return {
 	{
 		"echasnovski/mini.comment",
 		version = false,
+		event = "VeryLazy",
 		config = function()
 			require("mini.comment").setup()
 		end,
@@ -67,6 +71,7 @@ return {
 	{
 		"echasnovski/mini.surround",
 		version = false,
+		event = "VeryLazy",
 		config = function()
 			require("mini.surround").setup({
 				mappings = {

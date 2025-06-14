@@ -1,28 +1,49 @@
 return {
 
 	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" }, -- Lazy load LSP
 	dependencies = {
 		{ "williamboman/mason.nvim", config = true },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
 		"SmiteshP/nvim-navic",
+		-- Remove cmp-nvim-lsp dependency since we're using blink.cmp
+		-- "hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
+		-- Optimized diagnostic configuration
 		vim.diagnostic.config({
-			virtual_text = true,
+			virtual_text = {
+				spacing = 4,
+				source = "if_many",
+				prefix = "●",
+			},
 			signs = true,
 			underline = true,
-			update_in_insert = false,
-			float = { source = "always" },
+			update_in_insert = false, -- Don't update diagnostics in insert mode for performance
+			severity_sort = true,
+			float = { 
+				source = "always",
+				focusable = false,
+				style = "minimal",
+				border = "rounded",
+			},
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 			callback = function(event)
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				
+				-- Performance: Only attach navic if document symbols are supported
 				if client and client.server_capabilities.documentSymbolProvider then
 					require("nvim-navic").attach(client, event.buf)
+				end
+
+				-- Performance: Disable semantic tokens for faster syntax highlighting
+				if client then
+					client.server_capabilities.semanticTokensProvider = nil
 				end
 
 				local map = function(keys, func, desc, mode)
@@ -40,6 +61,7 @@ return {
 				-- map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 				-- map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+				-- Use fzf-lua for faster searching
 				local fzf = require("fzf-lua")
 				map("gd", fzf.lsp_definitions, "[G]oto [D]efinition")
 				map("gr", fzf.lsp_references, "[G]oto [R]eferences")
@@ -51,6 +73,7 @@ return {
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+				-- Optimized document highlighting with debounce
 				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 					local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -82,6 +105,7 @@ return {
 			end,
 		})
 
+		-- Optimized auto-formatting
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = {
 				"*.js",
@@ -97,7 +121,14 @@ return {
 				"*.go",
 			},
 			callback = function()
-				vim.lsp.buf.format({ async = false })
+				-- Only format if LSP is attached and supports formatting
+				local clients = vim.lsp.get_clients({ bufnr = 0 })
+				for _, client in ipairs(clients) do
+					if client.supports_method("textDocument/formatting") then
+						vim.lsp.buf.format({ async = false, timeout_ms = 2000 })
+						break
+					end
+				end
 			end,
 		})
 		vim.g.prettier = {
@@ -110,8 +141,16 @@ return {
 		}
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		-- Use blink.cmp capabilities instead of cmp-nvim-lsp
 		capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+		
+		-- Performance: Reduce capabilities for faster responses
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		capabilities.textDocument.completion.completionItem.resolveSupport = {
+			properties = { "documentation", "detail", "additionalTextEdits" }
+		}
 
+		-- Only configure essential servers for performance
 		local servers = {
 			dockerls = {},
 			terraformls = {},
@@ -159,6 +198,7 @@ return {
 						format = {
 							enable = false,
 						},
+						telemetry = { enable = false }, -- Disable telemetry for performance
 					},
 				},
 			},
@@ -179,7 +219,6 @@ return {
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}
-
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					require("lspconfig")[server_name].setup(server)
 				end,

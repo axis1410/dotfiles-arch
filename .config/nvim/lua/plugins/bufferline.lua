@@ -1,6 +1,8 @@
 return {
 	"akinsho/bufferline.nvim",
 	version = "*",
+	lazy = false, -- Load immediately for UI
+	priority = 900, -- High priority for UI
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
@@ -21,9 +23,9 @@ return {
 				},
 				buffer_close_icon = "x",
 				modified_icon = "●",
-				close_icon = "",
-				left_trunc_marker = "",
-				right_trunc_marker = "",
+				close_icon = "",
+				left_trunc_marker = "",
+				right_trunc_marker = "",
 				diagnostics_update_in_insert = false,
 				offsets = {
 					{
@@ -58,7 +60,7 @@ return {
 							end
 						end
 						if pinned > 0 then
-							table.insert(result, { text = " " .. pinned, fg = "#e0af68" })
+							table.insert(result, { text = " " .. pinned, fg = "#e0af68" })
 						end
 						return result
 					end,

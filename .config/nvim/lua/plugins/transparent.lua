@@ -1,6 +1,8 @@
 return {
 	{
 		"xiyaowong/transparent.nvim",
+		lazy = false, -- Load immediately for transparency effects
+		priority = 800, -- Load after colorschemes but before other UI
 		config = function()
 			require("transparent").setup({
 				groups = {
