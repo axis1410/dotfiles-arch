@@ -5,7 +5,8 @@ font-style-bold-italic = MonaspiceNe Nerd Font Mono Bold Italic
 font-size = 15
 font-synthetic-style = true
 
-theme = "Tomorrow Night Eighties"
+# theme = "Tomorrow Night Eighties"
+theme = "tokyonight_moon"
 
 # config-file = ghostty-theme
 

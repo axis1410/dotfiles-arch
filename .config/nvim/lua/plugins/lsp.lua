@@ -23,7 +23,7 @@ return {
 			underline = true,
 			update_in_insert = false, -- Don't update diagnostics in insert mode for performance
 			severity_sort = true,
-			float = { 
+			float = {
 				source = "always",
 				focusable = false,
 				style = "minimal",
@@ -35,7 +35,7 @@ return {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 			callback = function(event)
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
-				
+
 				-- Performance: Only attach navic if document symbols are supported
 				if client and client.server_capabilities.documentSymbolProvider then
 					require("nvim-navic").attach(client, event.buf)
@@ -142,12 +142,12 @@ return {
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		-- Use blink.cmp capabilities instead of cmp-nvim-lsp
-		capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
-		
+		capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
 		-- Performance: Reduce capabilities for faster responses
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		capabilities.textDocument.completion.completionItem.resolveSupport = {
-			properties = { "documentation", "detail", "additionalTextEdits" }
+			properties = { "documentation", "detail", "additionalTextEdits" },
 		}
 
 		-- Only configure essential servers for performance
@@ -156,7 +156,6 @@ return {
 			terraformls = {},
 			yamlls = {},
 			rust_analyzer = {},
-			rustfmt = {},
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -224,9 +223,5 @@ return {
 				end,
 			},
 		})
-
-		require("lspconfig").ruff.setup({})
-		require("lspconfig").gopls.setup({})
-		-- require("lspconfig").pyright.setup({})
 	end,
 }

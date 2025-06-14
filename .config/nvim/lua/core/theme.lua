@@ -1,7 +1,7 @@
 local M = {}
 
 M.set_theme = function()
-    vim.cmd.colorscheme("onedark")
+    vim.cmd.colorscheme("tokyonight-moon")
 end
 
 return M
