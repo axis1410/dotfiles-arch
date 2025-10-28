@@ -4,6 +4,8 @@ font-style-italic = MonaspiceNe Nerd Font Mono Italic
 font-style-bold-italic = MonaspiceNe Nerd Font Mono Bold Italic
 font-size = 15
 font-synthetic-style = true
+font-thicken = true
+font-thicken-strength = 255
 
 # theme = "Tomorrow Night Eighties"
 # theme = "tokyonight_moon"
