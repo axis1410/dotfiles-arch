@@ -6,7 +6,8 @@ font-size = 15
 font-synthetic-style = true
 
 # theme = "Tomorrow Night Eighties"
-theme = "tokyonight_moon"
+# theme = "tokyonight_moon"
+theme = "JetBrains Darcula"
 
 # config-file = ghostty-theme
 
