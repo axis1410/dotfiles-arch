@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.loader.enable()
 
 require("lazy").setup({
+	require("plugins.dashboard"),
 	require("plugins.statusline"),
 	require("plugins.colorscheme"),
 	require("plugins.bufferline"),
