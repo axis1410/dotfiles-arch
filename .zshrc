@@ -666,3 +666,8 @@ alias c="clear"
 alias lg="lazygit"
 alias cd="z"
 alias cdi="zi"
+
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
