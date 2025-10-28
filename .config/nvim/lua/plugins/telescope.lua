@@ -13,11 +13,31 @@ return {
 			end,
 		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
+		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		{ "nvim-telescope/telescope-file-browser.nvim" },
+		{ "debugloop/telescope-undo.nvim" },
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
 	config = function()
 		require("telescope").setup({
 			defaults = {
+				prompt_prefix = "  ",
+				selection_caret = " ",
+				entry_prefix = "  ",
+				sorting_strategy = "ascending",
+				layout_strategy = "flex",
+				layout_config = {
+					prompt_position = "top",
+					height = 0.9,
+					width = 0.95,
+					horizontal = { preview_width = 0.75 },
+					vertical = { preview_height = 0.8 },
+				},
+				border = true,
+				results_title = false,
+				dynamic_preview_title = true,
+				path_display = { "smart" },
+				winblend = 0,
 				mappings = {
 					i = {
 						["<C-k>"] = require("telescope.actions").move_selection_previous,
@@ -25,42 +45,65 @@ return {
 						["<C-l>"] = require("telescope.actions").select_default,
 					},
 				},
-				layout_config = {
-					prompt_position = "top",
-				},
 			},
 			pickers = {
 				find_files = {
-					file_ignore_patterns = { "node_modules", "venv" },
+					file_ignore_patterns = { "node_modules", ".git", "venv", ".venv" },
 					hidden = true,
 					previewer = false,
 					theme = "dropdown",
+					layout_config = { width = 0.7, height = 0.6 },
 				},
-			},
-			live_grep = {
-				file_ignore_patterns = { "node_modules", ".git", ".venv" },
-				additional_args = function(_)
-					return { "--hidden" }
-				end,
+				live_grep = {
+					file_ignore_patterns = { "node_modules", ".git", ".venv" },
+					additional_args = function(_)
+						return { "--hidden" }
+					end,
+				},
+				buffers = {
+					previewer = false,
+					initial_mode = "normal",
+					sort_mru = true,
+					show_all_buffers = true,
+					ignore_current_buffer = false,
+					theme = "dropdown",
+					layout_config = { width = 0.7, height = 0.6 },
+					mappings = {
+						i = { ["<C-d>"] = require("telescope.actions").delete_buffer },
+						n = { ["dd"] = require("telescope.actions").delete_buffer },
+					},
+				},
+				colorscheme = {
+					enable_preview = true,
+					previewer = false,
+					theme = "dropdown",
+					layout_config = { width = 0.45, height = 0.5 },
+				},
 			},
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
-			},
-
-			colorscheme = {
-				enable_preview = true,
-				theme = "dropdown",
-				layout_config = {
-					width = 0.45,
-					height = 0.8,
+				live_grep_args = {
+					auto_quoting = true,
+				},
+				file_browser = {
+					theme = "dropdown",
+					hijack_netrw = true,
+				},
+				undo = {
+					side_by_side = true,
+					layout_strategy = "vertical",
+					layout_config = { preview_height = 0.8 },
 				},
 			},
 		})
 
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
+		pcall(require("telescope").load_extension, "live_grep_args")
+		pcall(require("telescope").load_extension, "file_browser")
+		pcall(require("telescope").load_extension, "undo")
 
 		local builtin = require("telescope.builtin")
 
@@ -74,6 +117,20 @@ return {
 		vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[S]earch [R]esume" })
 		vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+
+		vim.keymap.set(
+			"n",
+			"<leader>fG",
+			require("telescope").extensions.live_grep_args.live_grep_args,
+			{ desc = "Live grep (args)" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fe",
+			require("telescope").extensions.file_browser.file_browser,
+			{ desc = "[F]ile [E]xplorer" }
+		)
+		vim.keymap.set("n", "<leader>fu", require("telescope").extensions.undo.undo, { desc = "[F]ind [U]ndo history" })
 
 		vim.keymap.set("n", "<leader>th", function()
 			builtin.colorscheme({
@@ -108,11 +165,11 @@ return {
 			}))
 		end, { desc = "[/] Fuzzily search in current buffer" })
 
-		vim.keymap.set("n", "<leader>fg/", function()
-			builtin.live_grep({
-				grep_open_files = true,
-				prompt_title = "Live Grep in Open Files",
-			})
-		end, { desc = "[F]ind [G]rep in Open Files" })
+		-- vim.keymap.set("n", "<leader>fg/", function()
+		-- 	builtin.live_grep({
+		-- 		grep_open_files = true,
+		-- 		prompt_title = "Live Grep in Open Files",
+		-- 	})
+		-- end, { desc = "[F]ind [G]rep in Open Files" })
 	end,
 }

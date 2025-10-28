@@ -15,9 +15,8 @@ vim.loader.enable()
 
 require("lazy").setup({
 	require("plugins.dashboard"),
-	require("plugins.statusline"),
 	require("plugins.colorscheme"),
-	require("plugins.bufferline"),
+	require("plugins.staline"),
 	require("plugins.treesitter"),
 	require("plugins.lsp"),
 	require("plugins.formatting"),
@@ -37,7 +36,8 @@ require("lazy").setup({
 	require("plugins.mini"),
 	require("plugins.noice"),
 	require("plugins.tabout"),
-	require("plugins.fzf"),
+	-- require("plugins.fzf"),
+	require("plugins.telescope"),
 	require("plugins.snippets"),
 })
 
