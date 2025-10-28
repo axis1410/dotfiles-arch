@@ -662,3 +662,7 @@ alias mkdir="mkdir -p"
 
 alias cls="clear"
 alias c="clear"
+
+alias lg="lazygit"
+alias cd="z"
+alias cdi="zi"
