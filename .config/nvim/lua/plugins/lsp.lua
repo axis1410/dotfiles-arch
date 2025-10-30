@@ -211,6 +211,7 @@ return {
 			"stylua",
 			"ruff",
 			"prettier",
+			"pyright",
 			"pyproject-fmt",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
