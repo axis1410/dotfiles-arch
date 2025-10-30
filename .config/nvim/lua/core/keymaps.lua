@@ -43,3 +43,7 @@ vim.keymap.set("n", "di{", '"_di{', { desc = "Delete in braces (no yank)" })
 vim.keymap.set("n", "di[", '"_di[', { desc = "Delete in brackets (no yank)" })
 
 vim.keymap.set("v", "c", '"_c')
+
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
+vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
+vim.keymap.set("n", "<leader>bd", ":bdelete!<CR>", opts)
