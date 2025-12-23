@@ -1,9 +1,31 @@
+[general]
+import = ["~/.config/alacritty/themes/themes/ashes_dark.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+dimensions = { columns = 200, lines = 50 }
+position = { x = 0, y = 0 }
+decorations = "Buttonless"
+dynamic_padding = true
+blur = true
+# opacity = 0.95
+decorations_theme_variant = "Dark"
+startup_mode = "SimpleFullScreen"
+# startup_mode = "Maximized"
+
 [font]
-normal.family = "MonaspiceNe Nerd Font Mono"
-bold.family = "MonaspiceNe Nerd Font Mono Bold"
-italic.family = "MonaspiceNe Nerd Font Mono Italic"
-bold_italic.family = "MonaspiceNe Nerd Font Mono Bold Italic"
-size = 18
+# normal = { family = "JetBrainsMono Nerd Font Mono" }
+size = 12
+# offset = { x = 0, y = 1 }
+
+normal = { family = "MonaSpiceNe Nerd Font Mono" }
+# normal = { family = "MonoLisa Nerd Font Mono" }
 
 [mouse]
-hide_when_typing = false
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true

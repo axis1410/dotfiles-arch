@@ -671,3 +671,6 @@ alias cdi="zi"
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+
+
+alias nvchad='NVIM_APPNAME=nvchad nvim'
